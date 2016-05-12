@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+</head>
+<body>
+	<h1>One-time Binding</h1>
+	<h4>ใส่เครื่องหมาย :: ใน expression ที่ต้องการ One-time Binding</h4>
+	
+	<div ng-controller="FirstController">
+		<p>
+			<input type="text" ng-model="name">
+			<br>
+			You type : {{name}}
+		</p>
+		
+		<table border="1">
+			<tr>
+				<td>Id</td>
+				<td>Name</td>
+			</tr>
+			<tr ng-repeat="user in users track by $index">
+				<td>{{user.id}}</td>
+				<td>{{user.name}}</td>
+			</tr>
+		</table>
+		
+		<p>
+			<button ng-click="countWatchers()">Check</button> Watchers Count : {{watchersCount}}
+		</p>
+	</div>
+	
+	
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+		
+		.controller('FirstController', ['$scope', function($scope) {
+			$scope.users = [
+        		{id: 1, name: 'Tinky-Winky'}, 
+        		{id: 2, name: 'Dipsy'}, 
+        		{id: 3, name: 'Laa-Laa'}, 
+        		{id: 4, name: 'Po'} 
+        	];
+			
+			$scope.countWatchers = function() {
+				console.log($scope.$$watchers);
+				var watchers = ($scope.$$watchers) ? $scope.$$watchers.length : 0;
+	            var child = $scope.$$childHead;
+	            while (child) {
+	            	console.log(child.$$watchers);
+	                watchers += (child.$$watchers) ? child.$$watchers.length : 0;
+	                child = child.$$nextSibling;
+	            }
+	            
+				$scope.watchersCount = watchers;
+			}
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop4</title>
+</head>
+<body>
+	<h1>Workshop4 - Custom Filter</h1>
+	
+	<div ng-controller="HelloController">
+		<p>
+			Plaintext -> {{data}}
+		</p>
+		
+		<p>
+			Capitalize -> {{data | capitalize}}
+		</p>
+		
+		<p>
+			Capitalize Word -> {{data | capitalize:true}}
+		</p>
+	</div>
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

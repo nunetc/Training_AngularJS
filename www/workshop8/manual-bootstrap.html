@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><!-- no ng-app -->
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+</head>
+<body>
+	<h1>Manual Bootstrap</h1>
+	<h4>ใช้วิธี Manual Bootstrap เมื่อต้องการเช็คเงื่อนไขบ้างอย่าง ก่อนเริ่มใช้งาน Angular</h4>
+	
+	<div ng-controller="FirstController">
+		<p>
+			<input type="text" ng-model="name">
+			<br>
+			You type : {{name}}
+		</p>
+	</div>
+	
+	
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', ['dynamicModule'])
+		
+		.controller('FirstController', ['$scope', 'someData', function($scope, someData) {
+			$scope.name = someData;
+		}]);
+		
+		(function() {
+			// do something
+			// ...
+			// ...
+			angular.module('dynamicModule', []).value('someData', 'Superman');
+			
+			angular.element(document).ready(function() {
+				angular.bootstrap(document, [ 'myApp' ]);	// bootstrap angular
+			});
+		})();
+	</script>
+</body>
+</html>

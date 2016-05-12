@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+</head>
+<body>
+	<h1>Production</h1>
+	<h4>import angular-sanitize.js และเพิ่ม module ngSanitize เพื่อเปิดให้ใช้งาน ng-bind-html ได้</h4>
+	
+	<div ng-controller="FirstController">
+		<p>
+			ng-bind : <span ng-bind="nameBold"></span>
+		</p>
+		<p>
+			ng-bind-html : <span ng-bind-html="nameBold"></span>
+		</p>
+	</div>
+	
+	
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script src="/lib/angular/angular-sanitize.js"></script>
+	<script>
+		angular.module('myApp', ['ngSanitize'])
+		//angular.module('myApp', [])
+		
+		.controller('FirstController', ['$scope', '$sce', function($scope, $sce) {
+
+			$scope.nameBold = '<b>Batman</b>';
+			//$scope.nameBold = $sce.trustAsHtml('<b>Batman</b>');
+		}]);
+	</script>
+</body>
+</html>

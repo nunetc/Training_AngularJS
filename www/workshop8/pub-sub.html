@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+	<style type="text/css">
+		div {
+			margin: 10px;
+			padding: 10px;
+			border: solid 2px blue;
+		}
+	</style>
+</head>
+<body>
+	<h1>Messaging Service</h1>
+	<h4>$broadcast สำหรับส่งอีเว้นท์จากบนลงล่าง, $emit สำหรับส่งอีเว้นท์จากล่างขึ้นบน, $on สำหรับเฝ้าอีเว้นท์</h4>
+
+	<div ng-controller="FirstController">
+		FirstController
+
+		<div ng-controller="ChildController">
+			ChildController
+			<br>
+			<button ng-click="childClick()">click</button>
+		</div>
+	</div>
+
+	<div ng-controller="SecondController">
+		SecondController
+		<p>
+			<button ng-click="MessagingService.publish('number-click', 1)">one</button>
+			<button ng-click="MessagingService.publish('number-click', 2)">two</button>
+			<button ng-click="MessagingService.publish('number-click', 3)">three</button>
+		</p>
+		<p>
+			<button ng-click="MessagingService.publish('name-click', 'batman')">batman</button>
+			<button ng-click="MessagingService.publish('name-click', 'superman')">superman</button>
+			<button ng-click="MessagingService.publish('name-click', 'iron man')">iron man</button>
+		</p>
+	</div>
+
+
+
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+
+		.factory('MessagingService', ['$rootScope', function($rootScope) {
+		    return {
+		        subscribe: function(event, scope, callback) {
+		            var handler = $rootScope.$on(event, callback);
+		            scope.$on('$destroy', handler);
+		        },
+
+		        publish: function(event, data) {
+		            $rootScope.$emit(event, data);
+		        }
+		    };
+		}])
+
+		.controller('FirstController', ['$scope', 'MessagingService', function($scope, MessagingService) {
+			var numberClickCallback = function(event, data) {
+				console.log(event);
+				alert('FirstController number --> '+data);
+			}
+
+			var nameClickCallback = function(event, data) {
+				alert('FirstController name --> '+data);
+			}
+
+			MessagingService.subscribe('number-click', $scope, numberClickCallback);
+
+			MessagingService.subscribe('name-click', $scope, nameClickCallback);
+		}])
+
+		.controller('ChildController', ['$scope', 'MessagingService', function($scope, MessagingService) {
+			var numberClickCallback = function(event, data) {
+				console.log(event);
+				alert('ChildController number --> '+data);
+			}
+
+			MessagingService.subscribe('number-click', $scope, numberClickCallback);
+
+			$scope.childClick = function() {
+				MessagingService.publish('child-click');
+			}
+		}])
+
+		.controller('SecondController', ['$scope', 'MessagingService', function($scope, MessagingService) {
+			$scope.MessagingService = MessagingService;
+
+			MessagingService.subscribe('child-click', $scope, function(event, data) {
+				alert('SecondController receive "Child click"');
+			});
+		}]);
+	</script>
+</body>
+</html>

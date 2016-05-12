@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>UI Router</title>
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<h1>UI Router - Sample App</h1>
+
+	<div class="header">
+		Menu ->
+		<a href="#/dashboard">Dashboard</a>
+		<a href="" ui-sref="shop">Shop</a>
+		<a href="" ui-sref="setup">Setup</a>
+	</div>
+
+	<div class="content">
+
+
+		<div class="sidenav">
+			[sidenav]
+			<div ui-view="sidenav"></div>
+		</div>
+
+		<div class="main">
+			[main]
+			<div ui-view="main"></div>
+		</div>
+	</div>
+
+	<div class="footer">
+		This is footer
+	</div>
+
+	<script src="/lib/angular/angular.js"></script>
+	<script src="/lib/angular-ui-router/angular-ui-router.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

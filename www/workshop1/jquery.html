@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop1</title>
+</head>
+<body>
+	<h1>Workshop1 - Hello World</h1>
+	
+	<div>
+		<input type="text" id="txtName">
+		
+		<p id="hello">
+			Hello {{name}}
+		</p>
+	</div>
+	
+	<script src="/lib/jquery/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#txtName').val('World');
+			$('#hello').text('Hello '+$('#txtName').val());
+			
+		    $('#txtName').bind('keyup', function(){
+		    	if (this.value) {
+		    		$('#hello').show();
+		    		$('#hello').text('Hello '+this.value);	
+		    	}
+		    	else {
+		    		$('#hello').hide();
+		    	}
+		    });
+		});
+	</script>
+	
+</body>
+</html>

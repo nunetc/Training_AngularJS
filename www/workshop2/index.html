@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop2</title>
+	<style type="text/css">
+		div {
+			padding: 10px;
+			border: solid 2px blue;
+		}
+	</style>
+</head>
+<body>
+	<h1>Workshop2 - Scope Inheritance</h1>
+
+	<div ng-controller="ParentController">
+		<p>Good {{timeOfDay}}, {{name}}!</p>
+
+		<div ng-controller="ChildController">
+			<p>Good {{timeOfDay}}, {{name}}!</p>
+
+			<div ng-controller="GrandChildController">
+				<p>Good {{timeOfDay}}, {{name}}!</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+		
+		.controller('ParentController', [ '$scope', function($scope) {
+			$scope.timeOfDay = 'morning';
+			$scope.name = 'Tinky-Winky';
+		} ])
+		
+		.controller('ChildController', [ '$scope', function($scope) {
+			$scope.name = 'Dipsy';
+		} ])
+		
+		.controller('GrandChildController', [ '$scope', function($scope) {
+			$scope.timeOfDay = 'evening';
+			$scope.name = 'Laa-Laa';
+		} ]);
+	</script>
+</body>
+</html>

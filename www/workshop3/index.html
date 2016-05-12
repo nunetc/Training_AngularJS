@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop3</title>
+</head>
+<body>
+	<h1>Workshop3 - Sample Built-in Directives</h1>
+	
+	<div ng-controller="HelloController">
+		<input type="text" ng-model="name">
+		<input type="checkbox" ng-model="isShowName"> show
+		
+		<p ng-show="isShowName">
+			<b>ng-show</b> Hello {{name}}
+		</p>
+		<p ng-if="isShowName">
+			<b>ng-if</b> Hello {{name}}
+		</p>
+		
+		<hr>
+		<b>ng-bind</b>
+		<p>{{name}}</p>
+		<p ng-bind="name"></p>
+		
+		<hr>
+		<b>ng-repeat</b>
+		<ul>
+			<!-- track by $index can provide a performance boost -->
+			<li ng-repeat="user in users track by $index">{{$index}} {{user.name}}</li>
+		</ul>
+		
+		<hr>
+		<b>ng-click</b>
+		<br>
+		<button ng-click="save()">Save</button>
+	</div>
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+		
+		.controller('HelloController', ['$scope', function($scope) {
+			$scope.name = 'World';
+			$scope.isShowName = true;
+			
+			$scope.users = [
+				{name: 'Tinky-Winky'}, 
+				{name: 'Dipsy'}, 
+				{name: 'Laa-Laa'}, 
+				{name: 'Laa-Laa'}, 
+				{name: 'Po'} 
+			];
+			
+			$scope.save = function() {
+				alert('Save Success');
+			}
+		}]);
+	</script>
+</body>
+</html>

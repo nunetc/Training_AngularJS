@@ -1,0 +1,15 @@
+<div>===>>>  Shop Product List  <<<===</div>
+<table border="1" width="300">
+	<tr>
+		<td>ID</td>
+		<td>Product Name</td>
+		<td>Price</td>
+		<td>Action</td>
+	</tr>
+	<tr ng-repeat="product in products">
+		<td>{{product.id}}</td>
+		<td>{{product.name}}</td>
+		<td>{{product.price}}</td>
+		<td><a href="" ui-sref="shop.productDetail({id: product.id, product: product})">edit</a></td>
+	</tr>
+</table>

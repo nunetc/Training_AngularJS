@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+</head>
+<body>
+	<h1>One-time Binding</h1>
+	<h4>Angular จะไม่รู้จัก async function ที่เกิดขึ้นใน jquery เราต้องใช้ $scope.$apply() เพื่อบอกให้ Angular ทำงาน</h4>
+	
+	<div ng-controller="FirstController">
+		<p>
+			<input type="text" ng-model="name">
+			<br>
+			You type : {{name}}
+		</p>
+		
+		<button id="btnBatman">Set name to "Batman"</button>
+	</div>
+	
+	
+	
+	<script src="/lib/jquery/jquery.min.js"></script>
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+		
+		.controller('FirstController', ['$scope', function($scope) {
+			
+			$scope.name = 'Superman';
+			
+			$('#btnBatman').bind('click', function() {
+				//$scope.$apply(function() {
+					$scope.name = 'Batman';
+				//});
+			});
+			
+		}]);
+	</script>
+</body>
+</html>
