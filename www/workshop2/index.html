@@ -14,13 +14,13 @@
 	<h1>Workshop2 - Scope Inheritance</h1>
 
 	<div ng-controller="ParentController">
-		<p>Good {{timeOfDay}}, {{name}}!</p>
+		<p>[Parent] : Good {{timeOfDay}}, {{name}}!</p>
 
 		<div ng-controller="ChildController">
-			<p>Good {{timeOfDay}}, {{name}}!</p>
+			<p>[Child] : Good {{timeOfDay}}, {{name}}!</p>
 
 			<div ng-controller="GrandChildController">
-				<p>Good {{timeOfDay}}, {{name}}!</p>
+				<p>[GrandChild] : Good {{timeOfDay}}, {{name}}!</p>
 			</div>
 		</div>
 	</div>

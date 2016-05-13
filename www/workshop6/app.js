@@ -1,4 +1,4 @@
-//angular.module('myApp', ['ngRoute', 'myApp.myHttpInterceptor'])
+// angular.module('myApp', ['ngRoute', 'myApp.myHttpInterceptor'])
 angular.module('myApp', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -21,13 +21,15 @@ angular.module('myApp', ['ngRoute'])
 	$http.get('/mock-webservice/users.json')
 		.then(function successCallback(response) {
 			$scope.users = response.data;
+		}, function errorCallback(response) {
+			console.log('GET users.json error >>>', response);
 		});
 
-	$http.get('/mock-webservice/usersx.json')
+	$http.get('/mock-webservice/products.json')
 		.then(function successCallback(response) {
 
 		}, function errorCallback(response) {
-			console.log('error >>>', response);
+			console.log('GET products.json error >>>', response);
 		});
 	
 }])

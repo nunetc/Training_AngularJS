@@ -27,7 +27,9 @@
 		<b>ng-repeat</b>
 		<ul>
 			<!-- track by $index can provide a performance boost -->
-			<li ng-repeat="user in users track by $index">{{$index}} {{user.name}}</li>
+			<li ng-repeat="user in users track by $index">
+				{{$index}} {{user.name}}
+			</li>
 		</ul>
 		
 		<hr>

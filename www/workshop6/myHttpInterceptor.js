@@ -15,10 +15,12 @@ angular.module('myApp.myHttpInterceptor', [])
 		},
 
 		'responseError' : function(rejection) {
-			$log.debug('responseError >>>', rejection);
-			alert('url = '+rejection.config.url+'\n'+'error code = '+rejection.status);
 			// do something on error
 			// ...
+			$log.debug('responseError >>>', rejection);
+			alert('url = '+rejection.config.url+'\n'+'error code = '+rejection.status);
+			// ...
+			
 			return $q.reject(rejection);
 		}
 	};

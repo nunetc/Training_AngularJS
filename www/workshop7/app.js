@@ -12,21 +12,21 @@ angular.module('myApp', ['ngRoute'])
 	}
 }])
 
-//.factory('NotifyService', [function() {
-//	var notify = {};
-//
-//	notify.alert = function(msg) {
-//		swal(msg)
-//	}
-//	notify.success = function(msg) {
-//		swal('Good job factory!', msg, 'success');
-//	}
-//	notify.error = function(msg) {
-//		swal('Oops...', msg, 'error');
-//	}
-//
-//	return notify;
-//}])
+// .factory('NotifyService', [function() {
+// 	var notify = {};
+
+// 	notify.alert = function(msg) {
+// 		swal(msg)
+// 	}
+// 	notify.success = function(msg) {
+// 		swal('Good job factory!', msg, 'success');
+// 	}
+// 	notify.error = function(msg) {
+// 		swal('Oops...', msg, 'error');
+// 	}
+
+// 	return notify;
+// }])
 
 // .provider('NotifyService', [function() {
 // 	var _successTitle = 'Good job provider!';
