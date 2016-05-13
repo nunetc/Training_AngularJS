@@ -5,90 +5,93 @@ angular.module('myApp', ['ui.router'])
 	$urlRouterProvider.otherwise("/dashboard");
 
 	$stateProvider
+		// dashboard page
 		.state('dashboard', {
-			url : '/dashboard',
+			url: '/dashboard',
 			views: {
-					'sidenav': {
-						templateUrl: 'sidenav-dashboard.html',
-						controller: 'SidenavDashboardCtrl'
-					},
-					'main': {
-						templateUrl: 'main-dashboard.html',
-						controller: 'MainDashboardCtrl'
-					}
-		    }
+				'sidenav': {
+					templateUrl: 'sidenav-dashboard.html',
+					controller: 'SidenavDashboardCtrl'
+				},
+				'main': {
+					templateUrl: 'main-dashboard.html',
+					controller: 'MainDashboardCtrl'
+				}
+			}
 		})
-
+		
+		// shop page
 		.state('shop', {
-			url : '/shop',
+			url: '/shop',
 			views: {
-					'sidenav': {
-						templateUrl: 'sidenav-shop.html',
-						controller: 'SidenavShopCtrl'
-					},
-					'main': {
-						templateUrl: 'main-shop.html',
-						controller: 'MainShopCtrl'
-					}
-		    }
+				'sidenav': {
+					templateUrl: 'sidenav-shop.html',
+					controller: 'SidenavShopCtrl'
+				},
+				'main': {
+					templateUrl: 'main-shop.html',
+					controller: 'MainShopCtrl'
+				}
+			}
 		})
 		.state('shop.product', {
-			url : '/product',
+			url: '/product',
 			templateUrl: 'main-shop-product.html',
 			controller: 'MainShopProductCtrl'
 		})
 		.state('shop.productDetail', {
-			url : '/product/:id',
+			url: '/product/:id',
 			params: {
-					id: null,
-					product: null
-    	},
+				id: null,
+				product: null
+			},
 			templateUrl: 'main-shop-product-detail.html',
 			controller: 'MainShopProductDetailCtrl'
 		})
 		.state('shop.category', {
-			url : '/category',
+			url: '/category',
 			template: '<div>===>>>  Shop Category  <<<===</div>',
 			controller: 'MainShopCategoryCtrl'
 		})
 		.state('shop.promotion', {
-			url : '/promotion',
+			url: '/promotion',
 			template: '<div>===>>>  Shop Promotion  <<<===</div>',
 			controller: 'MainShopPromotionCtrl'
 		})
 
+		// setup page
 		.state('setup', {
-			url : '/setup',
+			url: '/setup',
 			views: {
-					'sidenav': {
-						templateUrl: 'sidenav-setup.html',
-						controller: 'SidenavSetupCtrl'
-					},
-					'main': {
-						templateUrl: 'main-setup.html',
-						controller: 'MainSetupCtrl'
-					}
-		    }
+				'sidenav': {
+					templateUrl: 'sidenav-setup.html',
+					controller: 'SidenavSetupCtrl'
+				},
+				'main': {
+					templateUrl: 'main-setup.html',
+					controller: 'MainSetupCtrl'
+				}
+			}
 		})
 		.state('setup.user', {
-			url : '/user',
+			url: '/user',
 			template: '<div>===>>>  Setup User  <<<===</div>',
 			controller: 'MainSetupUserCtrl'
 		})
 		.state('setup.role', {
-			url : '/role',
+			url: '/role',
 			template: '<div>===>>>  Setup Role  <<<===</div>',
 			controller: 'MainSetupRoleCtrl'
 		})
 
 }])
 
-.controller('MainShopProductCtrl', function($scope) {
+.controller('MainShopProductCtrl', function ($scope) {
 	$scope.products = [
-		{id:1, name:'aaa', price:5},
-		{id:2, name:'bbb', price:10},
-		{id:3, name:'ccc', price:20},
-		{id:4, name:'ddd', price:500},
+		{ id: 1, name: 'aaa', price: 5 },
+		{ id: 2, name: 'bbb', price: 10 },
+		{ id: 3, name: 'ccc', price: 20 },
+		{ id: 4, name: 'ddd', price: 500 },
 	]
 })
 
