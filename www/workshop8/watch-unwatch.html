@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Workshop8</title>
+</head>
+<body>
+	<h1>Watch Unwatch</h1>
+	<h4>$scope.$watch สำหรับเฝ้าการเปลี่ยนแปลงค่าของ expression</h4>
+	
+	<div ng-controller="FirstController">
+		<input type="text" ng-model="name">
+		
+		
+		
+		
+		<button ng-click="unwatchClick()">Unwatch</button>
+	</div>
+	
+	
+	
+	<script src="/lib/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+		
+		.controller('FirstController', ['$scope', function($scope) {
+			
+			var unwatchName = $scope.$watch('name', function(newVal, oldVal) {		// watch function return unwatch function
+				console.log('newVal = ' + newVal);
+			})
+			
+			$scope.unwatchClick = function() {
+				unwatchName();			// call unwatch function
+				alert('Unwatched !');
+			}
+			
+		}]);
+	</script>
+</body>
+</html>
